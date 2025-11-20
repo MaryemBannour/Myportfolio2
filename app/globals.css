@@ -1,26 +1,36 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Boutons cohérents avec le thème */
+.btn-theme-primary {
+  background-color: #1C2A3A;
+  color: white;
+  padding: 12px 32px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.btn-theme-primary:hover {
+  background-color: #2D4A5F;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.btn-theme-secondary {
+  background-color: transparent;
+  color: #1C2A3A;
+  padding: 12px 32px;
+  border-radius: 8px;
+  border: 2px solid #1C2A3A;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.btn-theme-secondary:hover {
+  background-color: #1C2A3A;
+  color: white;
 }
