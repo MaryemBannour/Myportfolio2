@@ -1,53 +1,111 @@
-import Link from "next/link";
+'use client';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useState } from 'react';
+
 const Projects = () => {
+  const router = useRouter();
+  
   const projects = [
     {
       id: 1,
       title: "Mobi-Dical",
-      description:
-        "MobiDical is an educational web application designed to support autistic children with autism through interactive games and activities. It allows parents to track their child’s progress in a simple and accessible way.",
+      image: "/images/Mobi-Dical2.png",
+      category: "Web App"
     },
     {
       id: 2,
-      title: "Portfolio Website",
-      description:
-        "A responsive portfolio website showcasing my skills and projects with modern design principles.",
+      title: "Portfolio", 
+      image: "/images/Portfolio.png",
+      category: "Web App"
     },
     {
       id: 3,
-      title: "Habit tracker App",
-      description:
-        "A mobile app to help users build and maintain healthy habits through reminders and progress tracking.",
-    },
+      title: "Habbit tracker app",
+      image: "/images/habit-tracker.png", 
+      category: "Mobile App"
+    }
   ];
+
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  
+  const nextProject = () => {
+    setCurrentProjectIndex((prev) => (prev + 1) % projects.length);
+  };
+  
+  const prevProject = () => {
+    setCurrentProjectIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  // Projets à afficher (tu peux ajuster le nombre)
+  const visibleProjects = projects.slice(currentProjectIndex, currentProjectIndex + 2);
+
   return (
     <section id="projects" className="py-20 bg-[#FEEEEB]">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-[#1C2A3A] text-center mb-16">
-          Projects
+          My Projects
         </h2>
+        
+        {/* Grille de projets */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {projects.map((project) => (
-            <div key={project.id} className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-2xl font-bold text-[#1C2A3A] mb-3">
-                {project.title}
-              </h3>
-              <p className="text-[#2D4A5F] mb-4">{project.description}</p>
-              <Link
-                href={`/projects/${project.id}`}
-                className="btn-theme-primary inline-block"
-              >
-                View Details
-              </Link>
+          {visibleProjects.map((project) => (
+            <div key={project.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+              {/* Image du projet */}
+              <div className="relative h-64 bg-gray-200">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="bg-[#1C2A3A] text-white px-3 py-1 rounded-full text-sm">
+                    {project.category}
+                  </span>
+                </div>
+              </div>
+              
+              {/* Contenu */}
+              <div className="p-6">
+                <h3 className="text-2xl font-bold text-[#1C2A3A] mb-2">
+                  {project.title}
+                </h3>
+                
+                {/* Bouton View Details */}
+                <Link 
+                  href={`/projects/${project.id}`}
+                  className="inline-block bg-[#1C2A3A] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#2D4A5F] transition duration-300 mt-4"
+                >
+                  View Details
+                </Link>
+              </div>
             </div>
           ))}
         </div>
-        <div className="flex justify-center space-x-4">
-            <button className="btn-theme-secondary">Back</button>
-            <button className="btn-theme-primary">Next</button>
+        <div className="flex justify-center space-x-4 mt-8">
+          <button 
+            onClick={prevProject}
+            className="btn-theme-secondary text-center"
+          >
+            ← Previous
+          </button>
+          
+          <span className="flex items-center text-[#1C2A3A]">
+            {Math.floor(currentProjectIndex / 2) + 1} / {Math.ceil(projects.length / 2)}
+          </span>
+          
+          <button 
+            onClick={nextProject}
+            className="btn-theme-primary text-center"
+          >
+            Next →
+          </button>
         </div>
       </div>
     </section>
   );
 };
+
 export default Projects;
