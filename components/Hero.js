@@ -1,5 +1,3 @@
-import Maryem2 from "../public/images/Maryem2.png";
-import Maryem1 from "../public/images/Maryem1.png";
 import Maryem3 from "../public/images/maryem3.png";
 import Image from "next/image";
 const Hero = () => {

@@ -1,45 +1,49 @@
-'use client';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useState } from 'react';
+"use client";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 
 const Projects = () => {
   const router = useRouter();
-  
+
   const projects = [
     {
       id: 1,
       title: "Mobi-Dical",
       image: "/images/Mobi-Dical2.png",
-      category: "Web App"
+      category: "Web App",
     },
     {
       id: 2,
-      title: "Portfolio", 
+      title: "Portfolio",
       image: "/images/Portfolio.png",
-      category: "Web App"
+      category: "Web App",
     },
     {
       id: 3,
       title: "Habbit tracker app",
-      image: "/images/habit-tracker.png", 
-      category: "Mobile App"
-    }
+      image: "/images/habit-tracker.png",
+      category: "Mobile App",
+    },
   ];
 
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
-  
+
   const nextProject = () => {
     setCurrentProjectIndex((prev) => (prev + 1) % projects.length);
   };
-  
+
   const prevProject = () => {
-    setCurrentProjectIndex((prev) => (prev - 1 + projects.length) % projects.length);
+    setCurrentProjectIndex(
+      (prev) => (prev - 1 + projects.length) % projects.length
+    );
   };
 
-  // Projets à afficher (tu peux ajuster le nombre)
-  const visibleProjects = projects.slice(currentProjectIndex, currentProjectIndex + 2);
+  const visibleProjects = projects.slice(
+    currentProjectIndex,
+    currentProjectIndex + 2
+  );
 
   return (
     <section id="projects" className="py-20 bg-[#FEEEEB]">
@@ -47,12 +51,13 @@ const Projects = () => {
         <h2 className="text-4xl font-bold text-[#1C2A3A] text-center mb-16">
           My Projects
         </h2>
-        
-        {/* Grille de projets */}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {visibleProjects.map((project) => (
-            <div key={project.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-              {/* Image du projet */}
+            <div
+              key={project.id}
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
+            >
               <div className="relative h-64 bg-gray-200">
                 <Image
                   src={project.image}
@@ -66,15 +71,13 @@ const Projects = () => {
                   </span>
                 </div>
               </div>
-              
-              {/* Contenu */}
+
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-[#1C2A3A] mb-2">
                   {project.title}
                 </h3>
-                
-                {/* Bouton View Details */}
-                <Link 
+
+                <Link
                   href={`/projects/${project.id}`}
                   className="inline-block bg-[#1C2A3A] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#2D4A5F] transition duration-300 mt-4"
                 >
@@ -85,18 +88,19 @@ const Projects = () => {
           ))}
         </div>
         <div className="flex justify-center space-x-4 mt-8">
-          <button 
+          <button
             onClick={prevProject}
             className="btn-theme-secondary text-center"
           >
             ← Previous
           </button>
-          
+
           <span className="flex items-center text-[#1C2A3A]">
-            {Math.floor(currentProjectIndex / 2) + 1} / {Math.ceil(projects.length / 2)}
+            {Math.floor(currentProjectIndex / 2) + 1} /{" "}
+            {Math.ceil(projects.length / 2)}
           </span>
-          
-          <button 
+
+          <button
             onClick={nextProject}
             className="btn-theme-primary text-center"
           >
