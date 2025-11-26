@@ -1,4 +1,4 @@
-import ProjectDetail from '@/components/ProjectDetail';
+import ProjectDetail from "@/components/ProjectDetail";
 
 export default async function ProjectPage({ params }) {
   const projectId = (await params).id;

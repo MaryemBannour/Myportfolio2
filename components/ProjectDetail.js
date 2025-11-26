@@ -10,7 +10,6 @@ const ProjectDetail = ({ projectId }) => {
   const [loading, setLoading] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Données des projets AVEC MULTIPLES IMAGES
   const projectsData = {
     1: {
       title: "Mobi-Dical",
@@ -29,7 +28,8 @@ const ProjectDetail = ({ projectId }) => {
         "Activity Tracking",
         "Child Progress Monitoring",
       ],
-      liveLink: "#",
+      liveLink:
+        "https://drive.google.com/file/d/1Dqjli_cuawHY7vghwa2QVylliZtnZEAu/view?usp=sharing",
       githubLink: "https://github.com/MaryemBannour/MobiDical",
     },
     2: {

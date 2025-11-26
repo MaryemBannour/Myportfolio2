@@ -10,9 +10,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Skills />
-      <Projects/>
-      <Contact/>
-
+      <Projects />
+      <Contact />
     </>
   );
 }
