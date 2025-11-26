@@ -48,7 +48,7 @@ const ProjectDetail = ({ projectId }) => {
         "Skills & Technologies",
         "Smooth Navigation",
       ],
-      liveLink: "#",
+      liveLink: "https://maryembannour.vercel.app",
       githubLink: "https://github.com/MaryemBannour/Myportfolio2",
     },
     3: {

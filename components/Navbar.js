@@ -9,7 +9,7 @@ const Navbar = () => {
         </Link>
         <div className="flex space-x-8">
           <a
-            href="#about"
+            href="#hero"
             className="text-[#2D4A5F] hover:text-[#1C2A3A] transition-colors duration-300"
           >
             About
