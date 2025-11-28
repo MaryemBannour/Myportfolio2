@@ -3,30 +3,18 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { projectsData } from "@/data/projectsData";
 
 const Projects = () => {
   const router = useRouter();
 
-  const projects = [
-    {
-      id: 1,
-      title: "Mobi-Dical",
-      image: "/images/Mobi-Dical2.png",
-      category: "Web App",
-    },
-    {
-      id: 2,
-      title: "Portfolio",
-      image: "/images/Portfolio.png",
-      category: "Web App",
-    },
-    {
-      id: 3,
-      title: "Habbit tracker app",
-      image: "/images/habit-tracker.png",
-      category: "Mobile App",
-    },
-  ];
+  // Convertir projectsData (objet) en tableau
+  const projects = Object.entries(projectsData).map(([id, data]) => ({
+    id: Number(id),
+    title: data.title,
+    image: data.images[0], // Prendre la première image du projet
+    category: data.technologies[0] === "Flutter" ? "Mobile App" : "Web App",
+  }));
 
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 
@@ -87,6 +75,7 @@ const Projects = () => {
             </div>
           ))}
         </div>
+        
         <div className="flex justify-center space-x-4 mt-8">
           <button
             onClick={prevProject}
