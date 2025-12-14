@@ -1,12 +1,11 @@
 "use client";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { projectsData } from "@/data/projectsData";
 
 const ProjectDetail = ({ projectId }) => {
-  const router = useRouter();
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -58,10 +57,6 @@ const ProjectDetail = ({ projectId }) => {
 
   const projectIds = Object.keys(projectsData).map(Number);
 
-  const goBackToPortfolio = () => {
-    router.push("/");
-  };
-
   if (loading) {
     return (
       <div className="min-h-screen bg-[#FEEEEB] flex items-center justify-center">
@@ -81,12 +76,12 @@ const ProjectDetail = ({ projectId }) => {
             Project Not Found
           </h1>
           <p className="text-xl text-[#2D4A5F] mb-8">Project ID: {projectId}</p>
-          <button
-            onClick={goBackToPortfolio}
-            className="bg-[#1C2A3A] text-white px-8 py-3 rounded-lg hover:bg-[#2D4A5F] transition duration-300 font-semibold"
+          <Link
+            href="/"
+            className="bg-[#1C2A3A] text-white px-8 py-3 rounded-lg hover:bg-[#2D4A5F] transition duration-300 font-semibold inline-block"
           >
             Back to Portfolio
-          </button>
+          </Link>
         </div>
       </div>
     );
@@ -101,30 +96,30 @@ const ProjectDetail = ({ projectId }) => {
     <div className="min-h-screen bg-[#FEEEEB] py-20">
       <div className="max-w-4xl mx-auto px-6">
         <div className="flex justify-between items-center mb-8">
-          <button
-            onClick={goBackToPortfolio}
+          <Link
+            href="/"
             className="flex items-center text-[#1C2A3A] hover:text-[#2D4A5F] font-medium transition duration-300"
           >
             ← Back to Portfolio
-          </button>
+          </Link>
 
           <div className="flex items-center space-x-4">
             <span className="text-[#1C2A3A] font-medium">
               {currentIndex + 1} / {projectIds.length}
             </span>
             <div className="flex space-x-2">
-              <button
-                onClick={() => router.push(`/projects/${prevProjectId}`)}
+              <Link
+                href={`/projects/${prevProjectId}`}
                 className="bg-transparent text-[#1C2A3A] border-2 border-[#1C2A3A] px-4 py-2 rounded-lg hover:bg-[#1C2A3A] hover:text-white transition duration-300"
               >
                 ← Previous
-              </button>
-              <button
-                onClick={() => router.push(`/projects/${nextProjectId}`)}
+              </Link>
+              <Link
+                href={`/projects/${nextProjectId}`}
                 className="bg-[#1C2A3A] text-white px-4 py-2 rounded-lg hover:bg-[#2D4A5F] transition duration-300"
               >
                 Next →
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -240,6 +235,8 @@ const ProjectDetail = ({ projectId }) => {
         <div className="flex space-x-4 mb-12">
           <a
             href={project.liveLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-[#1C2A3A] text-white px-6 py-3 rounded-lg hover:bg-[#2D4A5F] transition duration-300 font-semibold"
           >
             Live Demo
@@ -255,19 +252,19 @@ const ProjectDetail = ({ projectId }) => {
         </div>
 
         <div className="flex justify-between items-center mt-12 pt-8 border-t border-[#CBD9E6]">
-          <button
-            onClick={() => router.push(`/projects/${prevProjectId}`)}
+          <Link
+            href={`/projects/${prevProjectId}`}
             className="flex items-center text-[#1C2A3A] hover:text-[#2D4A5F] font-medium transition duration-300"
           >
             ← Previous Project: {projectsData[prevProjectId]?.title}
-          </button>
+          </Link>
 
-          <button
-            onClick={() => router.push(`/projects/${nextProjectId}`)}
+          <Link
+            href={`/projects/${nextProjectId}`}
             className="flex items-center text-[#1C2A3A] hover:text-[#2D4A5F] font-medium transition duration-300"
           >
             Next Project: {projectsData[nextProjectId]?.title} →
-          </button>
+          </Link>
         </div>
       </div>
     </div>

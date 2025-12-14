@@ -1,13 +1,10 @@
 "use client";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { projectsData } from "@/data/projectsData";
 
 const Projects = () => {
-  const router = useRouter();
-
   // Convertir projectsData (objet) en tableau
   const projects = Object.entries(projectsData).map(([id, data]) => ({
     id: Number(id),

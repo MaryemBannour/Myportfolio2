@@ -1,12 +1,16 @@
-// data/projectsData.js
+// Ne pas utiliser process.env côté client, utiliser directement le basePath
+const basePath = '/Myportfolio2';
+
+const imagePath = (path) => `${basePath}${path}`;
+
 export const projectsData = {
   1: {
     title: "Mobi-Dical",
     images: [
-      "/images/homeMobi-Dical.png",
-      "/images/Mobi-Dical2.png",
-      "/images/activity.png",
-      "/images/responsiveMobi-Dical.png",
+      imagePath("/images/homeMobi-Dical.png"),
+      imagePath("/images/Mobi-Dical2.png"),
+      imagePath("/images/activity.png"),
+      imagePath("/images/responsiveMobi-Dical.png"),
     ],
     description:
       "MobiDical is an educational web application designed to support children with autism through interactive games and activities. It allows parents to track their child's progress in a simple and accessible way.",
@@ -24,9 +28,9 @@ export const projectsData = {
   2: {
     title: "Portfolio",
     images: [
-      "/images/Portfolio.png",
-      "/images/projectDetail.png",
-      "/images/responsivePortfolio.png",
+      imagePath("/images/Portfolio.png"),
+      imagePath("/images/projectDetail.png"),
+      imagePath("/images/responsivePortfolio.png"),
     ],
     description:
       "A responsive portfolio website showcasing my skills and projects with modern design principles.",
@@ -42,7 +46,7 @@ export const projectsData = {
   },
   3: {
     title: "Habit tracker app",
-    images: ["/images/habit-tracker.png"],
+    images: [imagePath("/images/habit-tracker.png")],
     description:
       "A mobile app to help users build and maintain healthy habits through reminders and progress tracking. This project is still in development",
     technologies: ["Flutter", "Dart", "Firebase"],
