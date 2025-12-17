@@ -1,23 +1,21 @@
-import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-[#2D4A5F]">
       <div className="max-w-3xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold text-white mb-8">
-          Get In Touch
-        </h2>
-        
+        <h2 className="text-4xl font-bold text-white mb-8">Get In Touch</h2>
+
         <p className="text-xl text-[#CBD9E6] mb-12 max-w-2xl mx-auto">
-          I'm always interested in new opportunities and collaborations. 
-          Don't hesitate to reach out!
+          I&apos;m always interested in new opportunities and collaborations.
+          Don&apos;t hesitate to reach out!
         </p>
 
         {/* Icônes simples */}
         <div className="flex justify-center space-x-12">
-                      <a 
-            href="https://www.linkedin.com/in/maryem-bannour-299937311" 
-            target="_blank" 
+          <a
+            href="https://www.linkedin.com/in/maryem-bannour-299937311"
+            target="_blank"
             rel="noopener noreferrer"
             className="group flex flex-col items-center"
           >
@@ -26,9 +24,9 @@ const Contact = () => {
             </div>
             <span className="text-white font-medium">LinkedIn</span>
           </a>
-                    <a 
-            href="https://github.com/mrymBn" 
-            target="_blank" 
+          <a
+            href="https://github.com/mrymBn"
+            target="_blank"
             rel="noopener noreferrer"
             className="group flex flex-col items-center"
           >
@@ -37,7 +35,7 @@ const Contact = () => {
             </div>
             <span className="text-white font-medium">GitHub</span>
           </a>
-          <a 
+          <a
             href="mailto:meryembannour3@gmail.com"
             className="group flex flex-col items-center"
           >
@@ -46,13 +44,7 @@ const Contact = () => {
             </div>
             <span className="text-white font-medium">Email</span>
           </a>
-
-
-
-
         </div>
-
-
       </div>
     </section>
   );

@@ -1,14 +1,20 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { projectsData } from "@/data/projectsData";
 
 const ProjectDetail = ({ projectId }) => {
-  const [project, setProject] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const project = useMemo(() => {
+    if (projectId) {
+      const numericId = Number(projectId);
+      return projectsData[numericId] || null;
+    }
+    return null;
+  }, [projectId]);
 
   const getImageClassName = (imagePath) => {
     const isMobileImage =
@@ -30,19 +36,6 @@ const ProjectDetail = ({ projectId }) => {
       : "object-cover";
   };
 
-  useEffect(() => {
-    if (projectId) {
-      const numericId = Number(projectId);
-      const foundProject = projectsData[numericId];
-
-      if (foundProject) {
-        setProject(foundProject);
-        setCurrentImageIndex(0);
-      }
-      setLoading(false);
-    }
-  }, [projectId]);
-
   const nextImage = () => {
     setCurrentImageIndex((prev) =>
       prev === project.images.length - 1 ? 0 : prev + 1
@@ -56,17 +49,6 @@ const ProjectDetail = ({ projectId }) => {
   };
 
   const projectIds = Object.keys(projectsData).map(Number);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-[#FEEEEB] flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#1C2A3A] mx-auto mb-4"></div>
-          <p className="text-[#1C2A3A] text-xl">Loading project...</p>
-        </div>
-      </div>
-    );
-  }
 
   if (!project) {
     return (

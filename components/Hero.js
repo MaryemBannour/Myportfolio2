@@ -14,9 +14,9 @@ const Hero = () => {
             </h1>
             <p className="text-3xl text-[#1C2A3A] max-w-3xl leading-relaxed mb-12">
               {" "}
-              I'm a junior software engineer crafting modern web and mobile
-              applications with clean code and intuitive user experiences. Let's
-              collaborate to bring your digital vision to life.
+              I&apos;m a junior software engineer crafting modern web and mobile
+              applications with clean code and intuitive user experiences.
+              Let&apos;s collaborate to bring your digital vision to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <a href="#projects" className="btn-theme-primary text-center">
