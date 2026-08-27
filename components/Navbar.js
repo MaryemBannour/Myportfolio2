@@ -1,4 +1,8 @@
 import Link from "next/link";
+import { FaDownload } from "react-icons/fa";
+
+// Ne pas utiliser process.env côté client, utiliser directement le basePath
+const basePath = "/Myportfolio2";
 
 const Navbar = () => {
   return (
@@ -13,6 +17,12 @@ const Navbar = () => {
             className="text-[#2D4A5F] hover:text-[#1C2A3A] transition-colors duration-300"
           >
             About
+          </a>
+          <a
+            href="#experience"
+            className="text-[#2D4A5F] hover:text-[#1C2A3A] transition-colors duration-300"
+          >
+            Experience
           </a>
           <a
             href="#skills"
@@ -31,6 +41,14 @@ const Navbar = () => {
             className="text-[#2D4A5F] hover:text-[#1C2A3A] transition-colors duration-300"
           >
             Contact
+          </a>
+          <a
+            href={`${basePath}/Maryem_Bannour_CV_en.pdf`}
+            download
+            className="flex items-center gap-2 border border-[#1C2A3A] text-[#1C2A3A] px-4 py-1.5 rounded-full text-sm font-medium hover:bg-[#1C2A3A] hover:text-white transition-colors duration-300"
+          >
+            <FaDownload className="text-xs" />
+            Resume
           </a>
         </div>
       </div>

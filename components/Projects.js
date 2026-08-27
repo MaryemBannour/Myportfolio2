@@ -31,7 +31,7 @@ const Projects = () => {
   );
 
   return (
-    <section id="projects" className="py-20 bg-[#FEEEEB]">
+    <section id="projects" className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-[#1C2A3A] text-center mb-16">
           My Projects
