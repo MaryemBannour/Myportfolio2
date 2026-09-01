@@ -1,34 +1,17 @@
+"use client";
+import { useLanguage } from "@/context/LanguageContext";
+
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Language skills",
-      items: ["Arabic (native)", "French ", "English "],
-    },
-    {
-      title: "Web Development",
-      items: ["React", "Next.js", "JavaScript", "TypeScript"],
-    },
-    {
-      title: "Backend Development",
-      items: ["Node.js", "Express.js", "REST APIs", "JWT Authentication"],
-    },
-    {
-      title: "Mobile Development",
-      items: ["React Native", "Flutter", "Dart"],
-    },
-    {
-      title: "Database Management",
-      items: ["MongoDB", "MySQL", "Oracle", "Firebase"],
-    },
-  ];
+  const { t } = useLanguage();
+
   return (
     <section id="skills" className="py-20 bg-[#FEEEEB]">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-[#1C2A3A] text-center mb-16">
-          Skills
+          {t.skills.sectionTitle}
         </h2>
         <div className="grid grid-colos-1 md:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-10">
-          {skillCategories.map((category, index) => (
+          {t.skills.categories.map((category, index) => (
             <div key={index} className="bg-[#FFFFFB] rounded-lg p-6">
               <h3 className="text-xl font-bold text-[#1C2A3A] mb-4">
                 {category.title}
