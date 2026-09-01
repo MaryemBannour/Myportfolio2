@@ -8,8 +8,16 @@ export function LanguageProvider({ children }) {
   const [language, setLanguageState] = useState("en");
 
   useEffect(() => {
-    const stored = localStorage.getItem("lang");
+    let stored = null;
+    try {
+      stored = localStorage.getItem("lang");
+    } catch {
+      // localStorage may be unavailable (blocked storage, private browsing, etc.);
+      // fall through to navigator-based detection as if nothing was stored.
+      stored = null;
+    }
     if (stored === "en" || stored === "fr") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: static export must hydrate as EN, then correct post-mount
       setLanguageState(stored);
       return;
     }
@@ -22,7 +30,12 @@ export function LanguageProvider({ children }) {
 
   const setLanguage = (lang) => {
     setLanguageState(lang);
-    localStorage.setItem("lang", lang);
+    try {
+      localStorage.setItem("lang", lang);
+    } catch {
+      // Storage blocked (e.g. private browsing) — language still updates
+      // for the current session, it just won't persist across reloads.
+    }
   };
 
   return (

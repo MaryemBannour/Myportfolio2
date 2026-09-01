@@ -244,14 +244,14 @@ const ProjectDetail = ({ projectId }) => {
             href={`/projects/${prevProjectId}`}
             className="flex items-center text-[#1C2A3A] hover:text-[#2D4A5F] font-medium transition duration-300"
           >
-            ← {t.projectDetail.previousProject}: {projectsData[prevProjectId]?.title}
+            ← {t.projectDetail.previousProject} {projectsData[prevProjectId]?.title}
           </Link>
 
           <Link
             href={`/projects/${nextProjectId}`}
             className="flex items-center text-[#1C2A3A] hover:text-[#2D4A5F] font-medium transition duration-300"
           >
-            {t.projectDetail.nextProject}: {projectsData[nextProjectId]?.title} →
+            {t.projectDetail.nextProject} {projectsData[nextProjectId]?.title} →
           </Link>
         </div>
       </div>

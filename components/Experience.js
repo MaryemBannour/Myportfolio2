@@ -4,6 +4,7 @@ import { useLanguage } from "@/context/LanguageContext";
 const Experience = () => {
   const { t } = useLanguage();
 
+  // Keep this array in sync (by index) with translations[lang].experience.items in data/translations.js
   const experiences = [
     { company: "Clevertech", dates: "Jul 2026 – Present", current: true },
     { company: "Mobelite", dates: "Feb 2025 – May 2025", current: false },

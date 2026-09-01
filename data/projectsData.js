@@ -3,6 +3,7 @@ const basePath = '/Myportfolio2';
 
 const imagePath = (path) => `${basePath}${path}`;
 
+// Keep these numeric ids in sync (by id) with translations[lang].projects.items in data/translations.js
 export const projectsData = {
   1: {
     title: "Mobi-Dical",
