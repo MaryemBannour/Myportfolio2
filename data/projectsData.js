@@ -12,15 +12,7 @@ export const projectsData = {
       imagePath("/images/activity.png"),
       imagePath("/images/responsiveMobi-Dical.png"),
     ],
-    description:
-      "MobiDical is an educational web application designed to support children with autism through interactive games and activities. It allows parents to track their child's progress in a simple and accessible way.",
     technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
-    features: [
-      "Parent Dashboard",
-      "Educational Activities for Autistic Children",
-      "Activity Tracking",
-      "Child Progress Monitoring",
-    ],
     liveLink:
       "https://drive.google.com/file/d/1Dqjli_cuawHY7vghwa2QVylliZtnZEAu/view?usp=sharing",
     githubLink: "https://github.com/MaryemBannour/MobiDical",
@@ -32,30 +24,14 @@ export const projectsData = {
       imagePath("/images/browse.png"),
       imagePath("/images/detail.png"),
     ],
-    description:
-      "A personalized movie and TV show discovery platform, featuring tailored recommendations, curated collections of new releases and classics, and user ratings. Movie and show data is powered by the TMDB API.",
     technologies: ["React.js", "TMDB API", "Tailwind CSS"],
-    features: [
-      "Personalized Recommendations",
-      "Genre & Year Filtering",
-      "User Ratings",
-      "Detailed Movie & Show Pages",
-    ],
     liveLink: "#",
     githubLink: "#",
   },
   3: {
     title: "Habit tracker app",
     images: [imagePath("/images/habit-tracker.png")],
-    description:
-      "A mobile app to help users build and maintain healthy habits through reminders and progress tracking. This project is still in development",
     technologies: ["Flutter", "Dart", "Firebase"],
-    features: [
-      "Habit Creation",
-      "Smart Reminders",
-      "Progress Tracking",
-      "User Authentication",
-    ],
     liveLink: "#",
     githubLink: "#",
   },

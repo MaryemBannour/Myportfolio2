@@ -3,14 +3,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { projectsData } from "@/data/projectsData";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Projects = () => {
-  // Convertir projectsData (objet) en tableau
+  const { t } = useLanguage();
+
   const projects = Object.entries(projectsData).map(([id, data]) => ({
     id: Number(id),
     title: data.title,
-    image: data.images[0], // Prendre la première image du projet
-    category: data.technologies[0] === "Flutter" ? "Mobile App" : "Web App",
+    image: data.images[0],
+    category:
+      data.technologies[0] === "Flutter" ? t.projects.categoryMobile : t.projects.categoryWeb,
   }));
 
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
@@ -34,7 +37,7 @@ const Projects = () => {
     <section id="projects" className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-[#1C2A3A] text-center mb-16">
-          My Projects
+          {t.projects.sectionTitle}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -66,19 +69,19 @@ const Projects = () => {
                   href={`/projects/${project.id}`}
                   className="inline-block bg-[#1C2A3A] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#2D4A5F] transition duration-300 mt-4"
                 >
-                  View Details
+                  {t.projects.viewDetails}
                 </Link>
               </div>
             </div>
           ))}
         </div>
-        
+
         <div className="flex justify-center space-x-4 mt-8">
           <button
             onClick={prevProject}
             className="btn-theme-secondary text-center"
           >
-            ← Previous
+            {t.projects.previous}
           </button>
 
           <span className="flex items-center text-[#1C2A3A]">
@@ -90,7 +93,7 @@ const Projects = () => {
             onClick={nextProject}
             className="btn-theme-primary text-center"
           >
-            Next →
+            {t.projects.next}
           </button>
         </div>
       </div>
