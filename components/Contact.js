@@ -1,8 +1,10 @@
 "use client";
 import { useState } from "react";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
 
@@ -36,11 +38,10 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-[#2D4A5F]">
       <div className="max-w-3xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold text-white mb-8">Get In Touch</h2>
+        <h2 className="text-4xl font-bold text-white mb-8">{t.contact.title}</h2>
 
         <p className="text-xl text-[#CBD9E6] mb-12 max-w-2xl mx-auto">
-          I&apos;m always interested in new opportunities and collaborations.
-          Don&apos;t hesitate to reach out!
+          {t.contact.intro}
         </p>
 
         {/* Icônes simples */}
@@ -78,9 +79,7 @@ const Contact = () => {
           </a>
         </div>
 
-        <p className="text-[#CBD9E6] mb-8">
-          Reach out directly using the links above, or send me a message below.
-        </p>
+        <p className="text-[#CBD9E6] mb-8">{t.contact.chooseText}</p>
 
         <form onSubmit={handleSubmit} className="text-left mb-4 space-y-4">
           <input type="text" name="_honey" style={{ display: "none" }} tabIndex="-1" autoComplete="off" />
@@ -88,7 +87,7 @@ const Contact = () => {
           <input
             type="text"
             name="name"
-            placeholder="Your name"
+            placeholder={t.contact.namePlaceholder}
             required
             value={formData.name}
             onChange={handleChange}
@@ -97,7 +96,7 @@ const Contact = () => {
           <input
             type="email"
             name="email"
-            placeholder="Your email"
+            placeholder={t.contact.emailPlaceholder}
             required
             value={formData.email}
             onChange={handleChange}
@@ -105,7 +104,7 @@ const Contact = () => {
           />
           <textarea
             name="message"
-            placeholder="Your message"
+            placeholder={t.contact.messagePlaceholder}
             required
             rows={5}
             value={formData.message}
@@ -119,18 +118,14 @@ const Contact = () => {
               disabled={status === "loading"}
               className="bg-white text-[#1C2A3A] px-8 py-3 rounded-lg font-medium hover:bg-[#CBD9E6] transition duration-300 disabled:opacity-60"
             >
-              {status === "loading" ? "Sending..." : "Send Message"}
+              {status === "loading" ? t.contact.sendingButton : t.contact.sendButton}
             </button>
 
             {status === "success" && (
-              <p className="text-[#CBD9E6] mt-4">
-                Thanks! Your message has been sent — I&apos;ll get back to you soon.
-              </p>
+              <p className="text-[#CBD9E6] mt-4">{t.contact.successMessage}</p>
             )}
             {status === "error" && (
-              <p className="text-red-300 mt-4">
-                Something went wrong. Please try again or email me directly.
-              </p>
+              <p className="text-red-300 mt-4">{t.contact.errorMessage}</p>
             )}
           </div>
         </form>
