@@ -4,8 +4,10 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { projectsData } from "@/data/projectsData";
+import { useLanguage } from "@/context/LanguageContext";
 
 const ProjectDetail = ({ projectId }) => {
+  const { t } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const project = useMemo(() => {
@@ -15,6 +17,8 @@ const ProjectDetail = ({ projectId }) => {
     }
     return null;
   }, [projectId]);
+
+  const projectText = t.projects.items[Number(projectId)];
 
   const getImageClassName = (imagePath) => {
     const isMobileImage =
@@ -55,14 +59,16 @@ const ProjectDetail = ({ projectId }) => {
       <div className="min-h-screen bg-[#FEEEEB] flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-[#1C2A3A] mb-6">
-            Project Not Found
+            {t.projectDetail.notFoundTitle}
           </h1>
-          <p className="text-xl text-[#2D4A5F] mb-8">Project ID: {projectId}</p>
+          <p className="text-xl text-[#2D4A5F] mb-8">
+            {t.projectDetail.notFoundProjectId} {projectId}
+          </p>
           <Link
             href="/"
             className="bg-[#1C2A3A] text-white px-8 py-3 rounded-lg hover:bg-[#2D4A5F] transition duration-300 font-semibold inline-block"
           >
-            Back to Portfolio
+            {t.projectDetail.backToPortfolio}
           </Link>
         </div>
       </div>
@@ -82,7 +88,7 @@ const ProjectDetail = ({ projectId }) => {
             href="/"
             className="flex items-center text-[#1C2A3A] hover:text-[#2D4A5F] font-medium transition duration-300"
           >
-            ← Back to Portfolio
+            ← {t.projectDetail.backToPortfolio}
           </Link>
 
           <div className="flex items-center space-x-4">
@@ -94,13 +100,13 @@ const ProjectDetail = ({ projectId }) => {
                 href={`/projects/${prevProjectId}`}
                 className="bg-transparent text-[#1C2A3A] border-2 border-[#1C2A3A] px-4 py-2 rounded-lg hover:bg-[#1C2A3A] hover:text-white transition duration-300"
               >
-                ← Previous
+                {t.projects.previous}
               </Link>
               <Link
                 href={`/projects/${nextProjectId}`}
                 className="bg-[#1C2A3A] text-white px-4 py-2 rounded-lg hover:bg-[#2D4A5F] transition duration-300"
               >
-                Next →
+                {t.projects.next}
               </Link>
             </div>
           </div>
@@ -181,12 +187,12 @@ const ProjectDetail = ({ projectId }) => {
         </h1>
 
         <p className="text-xl text-[#2D4A5F] mb-8 leading-relaxed">
-          {project.description}
+          {projectText.description}
         </p>
 
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-[#1C2A3A] mb-4">
-            Technologies Used
+            {t.projectDetail.technologiesUsed}
           </h2>
           <div className="flex flex-wrap gap-3">
             {project.technologies.map((tech, index) => (
@@ -202,10 +208,10 @@ const ProjectDetail = ({ projectId }) => {
 
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-[#1C2A3A] mb-4">
-            Key Features
+            {t.projectDetail.keyFeatures}
           </h2>
           <ul className="space-y-3">
-            {project.features.map((feature, index) => (
+            {projectText.features.map((feature, index) => (
               <li key={index} className="flex items-start">
                 <span className="text-[#1C2A3A] font-bold mr-3">•</span>
                 <span className="text-[#2D4A5F] text-lg">{feature}</span>
@@ -221,7 +227,7 @@ const ProjectDetail = ({ projectId }) => {
             rel="noopener noreferrer"
             className="bg-[#1C2A3A] text-white px-6 py-3 rounded-lg hover:bg-[#2D4A5F] transition duration-300 font-semibold"
           >
-            Live Demo
+            {t.projectDetail.liveDemo}
           </a>
           <a
             href={project.githubLink}
@@ -229,7 +235,7 @@ const ProjectDetail = ({ projectId }) => {
             rel="noopener noreferrer"
             className="bg-transparent text-[#1C2A3A] border-2 border-[#1C2A3A] px-6 py-3 rounded-lg hover:bg-[#1C2A3A] hover:text-white transition duration-300 font-semibold"
           >
-            GitHub
+            {t.projectDetail.github}
           </a>
         </div>
 
@@ -238,14 +244,14 @@ const ProjectDetail = ({ projectId }) => {
             href={`/projects/${prevProjectId}`}
             className="flex items-center text-[#1C2A3A] hover:text-[#2D4A5F] font-medium transition duration-300"
           >
-            ← Previous Project: {projectsData[prevProjectId]?.title}
+            ← {t.projectDetail.previousProject}: {projectsData[prevProjectId]?.title}
           </Link>
 
           <Link
             href={`/projects/${nextProjectId}`}
             className="flex items-center text-[#1C2A3A] hover:text-[#2D4A5F] font-medium transition duration-300"
           >
-            Next Project: {projectsData[nextProjectId]?.title} →
+            {t.projectDetail.nextProject}: {projectsData[nextProjectId]?.title} →
           </Link>
         </div>
       </div>
