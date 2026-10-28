@@ -1,6 +1,6 @@
 # À propos de Maryem Bannour
 
-Je suis étudiante en Master 1 Ingénierie des Systèmes Informatiques (ISI) à la Faculté des Sciences de Monastir, en Tunisie. Avant ce Master, j'ai obtenu ma Licence en Sciences de l'Informatique dans la même faculté.
+Je suis étudiante en Master 2 Ingénierie des Systèmes d'information (ISI) à la Faculté des Sciences de Monastir, en Tunisie. Avant ce Master, j'ai obtenu ma Licence en Sciences de l'Informatique dans la même faculté.
 
 Je suis développeuse full-stack et mobile, avec une expérience concrète en React, React Native, Node.js et Flutter. En parallèle de mes études, je fais du développement freelance.
 

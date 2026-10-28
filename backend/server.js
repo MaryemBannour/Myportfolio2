@@ -6,7 +6,7 @@ const path = require("path");
 const { GoogleGenAI } = require("@google/genai");
 
 if (!process.env.GEMINI_API_KEY) {
-  console.error("❌ GEMINI_API_KEY manquant dans .env");
+  console.error("GEMINI_API_KEY manquant dans .env");
   process.exit(1);
 }
 
@@ -19,11 +19,11 @@ let knowledgeBase = [];
 
 function loadKnowledgeBase() {
   if (!fs.existsSync(EMBEDDINGS_FILE)) {
-    console.error(`❌ ${EMBEDDINGS_FILE} introuvable. Lance d'abord : npm run generate-embeddings`);
+    console.error(`${EMBEDDINGS_FILE} introuvable. Lance d'abord : npm run generate-embeddings`);
     process.exit(1);
   }
   knowledgeBase = JSON.parse(fs.readFileSync(EMBEDDINGS_FILE, "utf-8"));
-  console.log(`📚 Base de connaissances chargée : ${knowledgeBase.length} chunks.`);
+  console.log(`Base de connaissances chargée : ${knowledgeBase.length} chunks.`);
 }
 
 // Similarité cosinus entre deux vecteurs d'embedding
@@ -101,5 +101,5 @@ app.get("/health", (req, res) => {
 loadKnowledgeBase();
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`🚀 Serveur RAG lancé sur http://localhost:${PORT}`);
+  console.log(` Serveur RAG lancé sur http://localhost:${PORT}`);
 });
