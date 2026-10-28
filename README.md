@@ -4,7 +4,7 @@ Personal portfolio website with an integrated AI chatbot that answers visitors' 
 
 **Live site:** [maryembannour.github.io/Myportfolio2](https://maryembannour.github.io/Myportfolio2/)
 
-![Portfolio screenshot](docs/screenshots/portfolio.png)
+![Portfolio screenshot](screenshots/portfolio.png)
 
 ## Features
 
